@@ -1,16 +1,15 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-
+import { ThemeLayout } from "./context";
 import { Home } from "./pages";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <ThemeLayout>
+      <div className="App">
         <Home />
-      </header>
-    </div>
+      </div>
+    </ThemeLayout>
   );
 }
 
