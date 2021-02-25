@@ -1,17 +1,14 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Text = styled.p`
   font-weight: 300;
   font-size: 1.2em;
-
- "font-size: 2em; font-weight: 300"
-
 `;
 
 export const Input = styled.input`
   cursor: pointer;
   font-size: 1.4em;
-  margin: 40px 0 0;
+  margin: 40px 1vw;
   padding: 12px 18px;
   color: ${({ theme }) => theme.white};
   text-decoration: none;
@@ -20,7 +17,7 @@ export const Input = styled.input`
   border-bottom: 3px solid #999;
   transition: 0.2s;
   background-color: transparent;
-  width: 35%;
+  width: 20%;
   text-align: center;
   :active {
     background-color: transparent;
@@ -29,7 +26,6 @@ export const Input = styled.input`
     outline: none;
     border-bottom: 3px solid ${({ theme }) => theme.primary};
     background-color: transparent;
-    width: 40%;
   }
   :hover {
     outline: none;
@@ -42,14 +38,10 @@ export const Input = styled.input`
 `;
 
 export const Form = styled.form`
-  margin: 5vh auto;
+  padding: 1em 0;
 `;
 
-type IButtonProps = {
-  primary?: boolean;
-};
-
-export const StyledButton = styled.button<IButtonProps>`
+export const StyledButton = styled.button`
   background: transparent;
   border-radius: 5px;
   padding: 0.75em 2em;
@@ -67,9 +59,7 @@ export const StyledButton = styled.button<IButtonProps>`
     outline: none;
   }
 
-  ${({ theme, primary = true }) =>
-    primary &&
-    css`
+  ${({ theme }) => `
       background-color: ${theme.primary};
       color: ${theme.white};
 
@@ -95,6 +85,7 @@ export const SelectInput = styled.select`
   background-color: transparent;
   margin: 0 auto 0 1em;
 `;
+
 export const OptionInput = styled.option`
   background-color: black;
 `;

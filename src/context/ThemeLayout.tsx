@@ -1,19 +1,31 @@
 import React from "react";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 
 export const theme = {
   primary: "#E50914",
+  bar: "#222",
+  background: "#181c24",
+  black: "rgb(28,33,40,1)",
   white: "#FFF",
+  pureBlack: "#111",
 };
 
 export const ThemeLayout: React.FC = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <>
+    <Body>
       <GlobalStyle />
       {children}
-    </>
+    </Body>
   </ThemeProvider>
 );
+
+const Body = styled.div`
+  text-align: center;
+  background-color: ${theme.background};
+  min-height: 100vh;
+  font-size: calc(10px + 2vmin);
+  color: white;
+`;
 
 const GlobalStyle = createGlobalStyle`
 body {

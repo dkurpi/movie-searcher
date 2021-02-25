@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Pagination from "@material-ui/lab/Pagination";
 import { getTitles } from "../utils/fetchServices";
-import { makeStyles } from "@material-ui/core/styles";
 
-import { Card, Search } from "../components";
+import { Card, Search, Pagination, Loader, Message } from "../components";
+import { Animation, MovieContainer } from "../containers";
 
 enum VideoType {
   ALL = "",
@@ -13,8 +12,8 @@ enum VideoType {
 const videoTypes = Object.entries(VideoType);
 
 export function Home() {
-  const classes = useStyles();
   const [isLoading, setIsLoading] = useState(false);
+  const [isThisFirstTime, setIsThisFirstTime] = useState(true);
 
   const [inputValue, setInputValue] = useState("");
   const [type, setType] = useState<VideoType>(VideoType.ALL);
@@ -24,12 +23,13 @@ export function Home() {
   const [totalResults, setTotalResults] = useState(0);
   const [titleList, setTitleList] = useState<SingleTitle[]>([]);
 
+  const [moreInfoId, setMoreInfoId] = useState("");
+
   useEffect(() => {
     if (!title) return;
     setIsLoading(true);
     getTitles(title, type, page)
       .then((res) => {
-        console.log(res);
         setTitleList(res.Search);
         setTotalResults(Number(res.totalResults));
         setIsLoading(false);
@@ -43,6 +43,9 @@ export function Home() {
 
   const handleSearchClick = () => {
     setTitle(inputValue);
+    setPage(1);
+    setIsThisFirstTime(false);
+    clearInfoId();
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +55,7 @@ export function Home() {
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setType(e.target.value as VideoType);
+    setPage(1);
   };
 
   const handleChangePage = (
@@ -60,14 +64,34 @@ export function Home() {
   ) => {
     setPage(value);
     window.scrollTo(0, 0);
+    clearInfoId();
+  };
+
+  const handleCardClick = (id: string) => {
+    setMoreInfoId(id);
+    window.scrollTo(0, 0);
+  };
+
+  const clearInfoId = () => {
+    setMoreInfoId("");
   };
 
   return (
-    <div>
-      {/* FORM*/}
+    <>
+      <Animation>
+        {moreInfoId && (
+          <Animation.Children key={moreInfoId}>
+            <MovieContainer
+              titleID={moreInfoId}
+              close={clearInfoId}
+              setIsLoading={setIsLoading}
+            />
+          </Animation.Children>
+        )}
+      </Animation>
 
       <Search>
-        <Search.Text size="large">{"Type your video:"}</Search.Text>
+        <Search.Text>{"Type your video:"}</Search.Text>
         <Search.Input onChange={handleInputChange} value={inputValue} />
 
         <Search.Select value={type} onChange={handleSelectChange}>
@@ -78,68 +102,69 @@ export function Home() {
         <Search.Button onClick={handleSearchClick}>Search</Search.Button>
       </Search>
 
-      {/* CARD CONTAINER  + PAGINATION*/}
+      <Animation>
+        {!!titleList.length && !isLoading && title && (
+          <Animation.Children key={title}>
+            <small>{`For "${title}", found ${totalResults} titles`}</small>
+            <Card.Wrapper>
+              {titleList.map((video) => (
+                <Card
+                  key={video.imdbID}
+                  onClick={() => {
+                    handleCardClick(video.imdbID);
+                  }}
+                >
+                  <Card.Type>{video.Type}</Card.Type>
+                  <Card.Image src={video.Poster} />
+                  <Card.Title>{video.Title}</Card.Title>
+                  <Card.Year>{video.Year}</Card.Year>
+                </Card>
+              ))}
+            </Card.Wrapper>
 
-      {!!titleList.length && !isLoading && title && (
-        <>
-          <small>{`For "${title}", found ${totalResults} titles`}</small>
-          <h2 style={{ textAlign: "left" }}>{`Page ${page} `}</h2>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              maxWidth: "1440px",
-              margin: "5vh auto",
-              justifyContent: "center",
-            }}
-          >
-            {titleList.map((video) => (
-              <Card key={video.imdbID}>
-                <Card.Type>{video.Type}</Card.Type>
-                <Card.Image src={video.Poster} />
-                <Card.Title>{video.Title}</Card.Title>
-                <Card.Year>{video.Year}</Card.Year>
-              </Card>
-            ))}
-          </div>
-
-          <div style={{ display: "flex", justifyContent: "center" }}>
             <Pagination
-              classes={{ ul: classes.ul }}
               count={Math.ceil(totalResults / 10)}
               page={Number(page)}
               onChange={handleChangePage}
-              color="secondary"
             />
-          </div>
-        </>
-      )}
+          </Animation.Children>
+        )}
+      </Animation>
 
-      {/* NOT FOUND ERROR*/}
+      <Animation>
+        {!titleList.length && !isLoading && title && (
+          <Animation.Children key={title}>
+            <Message
+              mainText={`For title "${title}", didn't found any videos`}
+              secondText={`Try another one :)`}
+            />
+          </Animation.Children>
+        )}
+      </Animation>
 
-      {!titleList.length && !isLoading && title && (
-        <div style={{ margin: "15vh 0" }}>
-          <h1>{`For title "${title}", didn't found any videos`}</h1>
-          <small>{`Try another one :)`}</small>
-        </div>
-      )}
+      {!!isLoading && <Loader />}
 
-      {/* LOADER*/}
+      <Animation>
+        {isThisFirstTime && (
+          <Animation.Children key={title}>
+            <Message
+              mainText={`Welcome to my recruitment task`}
+              secondText={`For From Poland with Dev by Dawid Kurpiel `}
+            />
+          </Animation.Children>
+        )}
+      </Animation>
 
-      {!!isLoading && (
-        <div style={{ margin: "15vh 0" }}>
-          <h1>{`Loading...`}</h1>
-        </div>
-      )}
-    </div>
+      <Animation>
+        {!title && !isThisFirstTime && (
+          <Animation.Children key={title}>
+            <Message
+              mainText={`You forgot to type title!`}
+              secondText={`Or just testing corner cases :)`}
+            />
+          </Animation.Children>
+        )}
+      </Animation>
+    </>
   );
 }
-
-const useStyles = makeStyles(() => ({
-  ul: {
-    "& .MuiPaginationItem-root": {
-      color: "#fff",
-      margin: "20px 0 50px",
-    },
-  },
-}));

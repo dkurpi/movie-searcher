@@ -1,5 +1,12 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
+export const CardWrapper = styled.main`
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: 5vh auto;
+  justify-content: center;
+`;
 
 export const CardOuter = styled.section`
   max-width: 20%;
@@ -8,6 +15,9 @@ export const CardOuter = styled.section`
   border-radius: 20px;
   cursor: pointer;
   transition: 0.4s;
+  :hover {
+    transform: translate(0, 10px);
+  }
 `;
 
 export const CardInner = styled.div`
@@ -20,22 +30,10 @@ export const Image = styled.img`
   object-fit: cover;
   margin-bottom: 20px;
   height: 400px;
-  transition: 0.4s;
-  :hover {
-    filter: grayscale(100%);
-  }
+
   position: relative;
-  ::after {
-    content: "See more";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    background-color: red;
-  }
 `;
+
 export const Title = styled.p`
   font-weight: 500;
   font-size: 20px;

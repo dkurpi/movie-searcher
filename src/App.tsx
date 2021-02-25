@@ -1,14 +1,13 @@
 import React from "react";
-import "./App.css";
 import { ThemeLayout } from "./context";
 import { Home } from "./pages";
+import { Navbar } from "./containers";
 
 function App() {
   return (
     <ThemeLayout>
-      <div className="App">
-        <Home />
-      </div>
+      <Navbar />
+      <Home />
     </ThemeLayout>
   );
 }
