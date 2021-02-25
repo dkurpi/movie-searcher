@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
-export const Text = styled.p`
+export const Text = styled.span`
   font-weight: 300;
   font-size: 1.2em;
+
+  @media (max-width: 768px) {
+    padding: 20px 0;
+    font-size: 1.5em;
+    font-weight: 500;
+  }
 `;
 
 export const Input = styled.input`
@@ -17,7 +23,7 @@ export const Input = styled.input`
   border-bottom: 3px solid #999;
   transition: 0.2s;
   background-color: transparent;
-  width: 20%;
+  width: 400px;
   text-align: center;
   :active {
     background-color: transparent;
@@ -35,10 +41,25 @@ export const Input = styled.input`
   ::selection {
     background-color: ${({ theme }) => theme.primary};
   }
+
+  @media (max-width: 1080px) {
+    width: 30vw;
+  }
+
+  @media (max-width: 768px) {
+    width: 70vw;
+    margin: 10px 1vw;
+  }
 `;
 
 export const Form = styled.form`
   padding: 1em 0;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -84,6 +105,9 @@ export const SelectInput = styled.select`
   line-height: 1.4;
   background-color: transparent;
   margin: 0 auto 0 1em;
+  @media (max-width: 768px) {
+    margin: 2vh auto;
+  }
 `;
 
 export const OptionInput = styled.option`

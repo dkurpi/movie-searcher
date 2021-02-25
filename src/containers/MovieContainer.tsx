@@ -22,10 +22,10 @@ export const MovieContainer: React.FC<MovieInfoProps> = ({
       .then((res) => {
         setVideoInfo(res);
         setIsLoading(false);
-        console.log(res);
       })
       .catch((err) => {
         setIsLoading(false);
+        alert(err)
       });
   }, [titleID]);
 
@@ -38,14 +38,14 @@ export const MovieContainer: React.FC<MovieInfoProps> = ({
 
         <MovieInfo.Description>
           <MovieInfo.Title>{videoInfo?.Title}</MovieInfo.Title>
-          <MovieInfo.Date>{videoInfo?.Runtime}</MovieInfo.Date>
+          <MovieInfo.Date>{videoInfo?.Type.toUpperCase()}</MovieInfo.Date>
+
           <div>
             <MovieInfo.Tag>{videoInfo?.Year}</MovieInfo.Tag>
             <MovieInfo.Tag>{videoInfo?.Country} </MovieInfo.Tag>
             <MovieInfo.Tag>{videoInfo?.Runtime} </MovieInfo.Tag>
           </div>
           <MovieInfo.Genre>{videoInfo?.Genre}</MovieInfo.Genre>
-          <MovieInfo.Date>{videoInfo?.Type.toUpperCase()}</MovieInfo.Date>
           {videoInfo?.imdbRating !== "N/A" ? (
             <MovieInfo.RateSection>
               <h1>{videoInfo?.imdbRating} stars</h1>

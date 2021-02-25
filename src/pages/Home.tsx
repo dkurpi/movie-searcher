@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getTitles } from "../utils/fetchServices";
+import { VideoType, videoTypes } from "../utils/videoTypes";
 
 import { Card, Search, Pagination, Loader, Message } from "../components";
 import { Animation, MovieContainer } from "../containers";
-
-enum VideoType {
-  ALL = "",
-  MOVIES = "movie",
-  SERIES = "series",
-}
-const videoTypes = Object.entries(VideoType);
 
 export function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -91,12 +85,12 @@ export function Home() {
       </Animation>
 
       <Search>
-        <Search.Text>{"Type your video:"}</Search.Text>
+        <Search.Text>{"Find  video:"}</Search.Text>
         <Search.Input onChange={handleInputChange} value={inputValue} />
 
         <Search.Select value={type} onChange={handleSelectChange}>
           {videoTypes.map((option) => (
-            <Search.Option name={option[0]} value={option[1]} />
+            <Search.Option name={option[0]} value={option[1]} key={option[0]} />
           ))}
         </Search.Select>
         <Search.Button onClick={handleSearchClick}>Search</Search.Button>
@@ -105,7 +99,9 @@ export function Home() {
       <Animation>
         {!!titleList.length && !isLoading && title && (
           <Animation.Children key={title}>
-            <small>{`For "${title}", found ${totalResults} titles`}</small>
+            <small>{`For "${title}", found ${totalResults} ${
+              type === VideoType.ALL ? "titles" : type
+            } (click on poster to get more info)`}</small>
             <Card.Wrapper>
               {titleList.map((video) => (
                 <Card
@@ -135,7 +131,9 @@ export function Home() {
         {!titleList.length && !isLoading && title && (
           <Animation.Children key={title}>
             <Message
-              mainText={`For title "${title}", didn't found any videos`}
+              mainText={`For title "${title}", didn't found any ${
+                type === VideoType.ALL ? "titles" : type
+              }`}
               secondText={`Try another one :)`}
             />
           </Animation.Children>
@@ -148,8 +146,8 @@ export function Home() {
         {isThisFirstTime && (
           <Animation.Children key={title}>
             <Message
-              mainText={`Welcome to my recruitment task`}
-              secondText={`For From Poland with Dev by Dawid Kurpiel `}
+              mainText={`Welcome!`}
+              secondText={`App was made for recruitment task to From Poland with Dev by Dawid Kurpiel `}
             />
           </Animation.Children>
         )}

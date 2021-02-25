@@ -32,6 +32,5 @@ type VideoInfo = {
   imdbID: string;
   imdbRating: string;
   imdbVotes: string;
-  totalSeasons: string;
   Production: string;
 };

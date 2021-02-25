@@ -3,9 +3,10 @@ import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 
 export const theme = {
   primary: "#E50914",
-  bar: "#222",
+  bright: "#E5091450",
+  bar: "rgb(5,5,20,0.2)",
   background: "#181c24",
-  black: "rgb(28,33,40,1)",
+  black: "rgb(28,33,40)",
   white: "#FFF",
   pureBlack: "#111",
 };

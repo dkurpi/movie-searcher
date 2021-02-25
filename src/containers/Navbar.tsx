@@ -5,7 +5,8 @@ export function Navbar() {
   return (
     <NavWrapper>
       <Nav href={"/"}>
-        <ColorText>movie</ColorText>searchER
+        <ColorText>MOVIE</ColorText>
+        <span>SEARCHER</span>
       </Nav>
     </NavWrapper>
   );
@@ -14,6 +15,9 @@ export function Navbar() {
 const ColorText = styled.span`
   color: ${({ theme }) => theme.white};
   font-weight: 200;
+  :hover {
+    color: ${({ theme }) => theme.primary};
+  }
 `;
 
 const Nav = styled.a`
@@ -33,7 +37,8 @@ const Nav = styled.a`
     color: #06c;
   }
   :hover {
-    color: ${({ theme }) => theme.primary};
+    color: white;
   }
+  text-align: center;
 `;
 const NavWrapper = styled.nav``;

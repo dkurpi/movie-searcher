@@ -18,6 +18,11 @@ export const CardOuter = styled.section`
   :hover {
     transform: translate(0, 10px);
   }
+
+  @media (max-width: 1080px) {
+    max-width: 48%;
+    padding: 5px;
+  }
 `;
 
 export const CardInner = styled.div`
@@ -32,6 +37,10 @@ export const Image = styled.img`
   height: 400px;
 
   position: relative;
+
+  @media (max-width: 1080px) {
+    height: 40vh;
+  }
 `;
 
 export const Title = styled.p`

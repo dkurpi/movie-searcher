@@ -32,15 +32,19 @@ export const MovieInfo: React.FC<MovieInfoProps> & MovieInfoElements = ({
 MovieInfo.ImageContainer = ({ children, ...restProps }) => (
   <ImageOuter {...restProps}>{children}</ImageOuter>
 );
-MovieInfo.Image = ({ src, ...restProps }) => (
-  <Image src={src === "N/A" ? fallbackImageUrl : src} alt="" />
+MovieInfo.Image = ({ src }) => (
+  <Image
+    data-testid="movie-img"
+    src={src === "N/A" ? fallbackImageUrl : src}
+    alt=""
+  />
 );
 
 MovieInfo.Description = ({ children, ...restProps }) => (
   <Info {...restProps}>{children}</Info>
 );
 
-MovieInfo.Rating = ({ children, value, size, ...restProps }) => (
+MovieInfo.Rating = ({ children, value, size }) => (
   <Rating
     name="rating"
     value={value}
@@ -51,24 +55,21 @@ MovieInfo.Rating = ({ children, value, size, ...restProps }) => (
   />
 );
 
-MovieInfo.Title = ({ children, ...restProps }) => <h2>{children}</h2>;
-MovieInfo.Date = ({ children, ...restProps }) => <Date>{children}</Date>;
-MovieInfo.Tag = ({ children, ...restProps }) => <Tag>{children}</Tag>;
-MovieInfo.Genre = ({ children, ...restProps }) => <Genre>{children}</Genre>;
-MovieInfo.About = ({ children, ...restProps }) => (
-  <Description>{children}</Description>
-);
-MovieInfo.RateSection = ({ children, ...restProps }) => (
-  <RateSection>{children}</RateSection>
-);
+MovieInfo.Title = ({ children }) => <h2>{children}</h2>;
+MovieInfo.Date = ({ children }) => <Date>{children}</Date>;
+MovieInfo.Tag = ({ children }) => <Tag>{children}</Tag>;
+MovieInfo.Genre = ({ children }) => <Genre>{children}</Genre>;
+MovieInfo.About = ({ children }) => <Description>{children}</Description>;
+MovieInfo.RateSection = ({ children }) => <RateSection>{children}</RateSection>;
 
-MovieInfo.Atrributes = ({ children, name, values, ...restProps }) => (
+MovieInfo.Atrributes = ({ children, name, values }) => (
   <Actors>
     <b>{name}</b>
-    {`: ${values}`}
+    {": "}
+    <span>{values}</span>
   </Actors>
 );
 
-MovieInfo.Bar = ({ children, text, onClick, ...restProps }) => (
+MovieInfo.Bar = ({ children, text, onClick }) => (
   <CloseTag onClick={onClick}>{text}</CloseTag>
 );

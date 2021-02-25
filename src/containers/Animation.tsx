@@ -16,30 +16,30 @@ export const Animation: React.FC & AnimationVariants = ({
 
 const variants = {
   hidden: {
-    opacity: 0,
     y: 20,
+    opacity: 0,
+    transition: { duration: 0.5},
   },
   visible: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.3 },
+    transition: { duration: 0.5},
   },
   exit: {
-    x: -50,
+    x: -20,
     opacity: 0,
     transition: { duration: 0.2 },
   },
 };
 
-Animation.Children = ({ children, animate = "visible", ...restProps }) => {
+Animation.Children = ({ children, ...restProps }) => {
   return (
     <motion.div
       variants={variants}
       initial="hidden"
-      animate={animate}
+      animate="visible"
       exit="exit"
       {...restProps}
-      style={{ margin: 0 }}
     >
       {children}
     </motion.div>

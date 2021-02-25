@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# Name days search
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application that searches for movie films & series from the public API (http://www.omdbapi.com/).
 
-## Available Scripts
+#####Application allows user to:
+- search for movies, series by input names
+- see details about any movie,series in database
 
-In the project directory, you can run:
+## Demo
 
-### `yarn start`
+Here is a working live demo : https://dkurpi.github.io/movie-searcher
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Basic development process  - 4h
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. **Setting project + API calls**  *30min*
+2. **Basic Functions of App ** *1h 30min*
+3. **Styling** *2h*
 
-### `yarn test`
+####Here is the app demo after 4h of work: 
+https://dkurpi.github.io/movie-searcher-v1
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##Extra features process - 6h
+1. **Refactored** to get clean code *45min*
+2. **Implemented Framer-motion for animations** *45min*
+3. **Improved overall styling** *1h*
+4. **Implemented movie info container** *1h*
+5. **Styled Movie Info Container** *1h*
+6. **Refactored** components *1h*
+7. Wrote couple **test** for components/containers *1h*
 
-### `yarn build`
+####Here is the app after 10h of work: 
+https://dkurpi.github.io/movie-searcher
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
+## Technologies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React & Typescript
+- Styled-components for styling
+- Axios for API requests
+- React testing library for tests
+- Framer motion for animations
+- Material UI for Icons, Pagination
 
-### `yarn eject`
+## To improve
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Tests for containers, pages etc.
+- Add state management handler (Redux)
+- Improve reusability of components
+- Performance optimization
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Future features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Add Favourite movies page, where user can save best films
+- Add 'Titles for later' page, where user can save movies to watch
+- Description page for every title with detailed information
+- Search filter by multiple selected year (for example, for years 2020, 2019,2017)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Getting Started
 
-## Learn More
+1. Go to root directory
+2. Run `npm install`
+3. Run `npm run start`
+4. Open http://localhost:3000 to view it in the browser.
+5. Run `npm run test` for tests
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The page will automatically reload if you make changes to the code.
+You will see the build errors and lint warnings in the console.

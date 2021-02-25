@@ -7,6 +7,9 @@ export const Wrapper = styled(motion.div)`
   top: 0;
   position: relative;
   transition: 0.5s;
+  @media (max-width: 768px) {
+    padding: 4vh 0;
+  }
 `;
 
 export const Date = styled.div`
@@ -18,6 +21,9 @@ export const Content = styled.div`
   display: flex;
   margin: 0 auto;
   transition: 0.5s;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 export const RateSection = styled.section`
   margin: 2vh auto;
@@ -33,11 +39,11 @@ export const CloseTag = styled.div`
   font-size: 18px;
   padding: 5px;
   color: ${({ theme }) => theme.white};
-  background-color: ${({ theme }) => theme.pureBlack};
+  background-color: ${({ theme }) => theme.bar};
   transition: 0.3s;
   :hover {
     color: ${({ theme }) => theme.white};
-    background-color: ${({ theme }) => theme.primary};
+    background-color: ${({ theme }) => theme.bright};
   }
 `;
 
@@ -61,6 +67,11 @@ export const Info = styled.div`
   width: 60%;
   padding: 0 2em;
   text-align: left;
+  @media (max-width: 768px) {
+    padding: 0 5px;
+    width: 94%;
+    margin: 0 auto;
+  }
 `;
 
 export const Image = styled.img`
@@ -71,5 +82,9 @@ export const Image = styled.img`
   cursor: pointer;
   :hover {
     transform: scale(0.98);
+  }
+
+  @media (max-width: 768px) {
+    width: 94%;
   }
 `;

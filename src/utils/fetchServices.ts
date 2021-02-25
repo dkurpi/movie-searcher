@@ -1,6 +1,9 @@
 import axios, { AxiosResponse } from "axios";
 
+///Should not public :)
 const URLWithKey = "http://omdbapi.com/?apikey=aeae8ab";
+///
+
 
 interface APIResponseMovieList {
   Response: string;
@@ -46,7 +49,7 @@ export const getTitles = async (
     const { data }: AxiosResponse<APIResponseMovieList> = await axios(
       `${URLWithKey}&s=${searchPhrase}&type=${type}&page=${page}`
     );
-
+console.log(data)
     if (data.Response === "False") throw data.Error;
     return data;
   } catch (err) {
@@ -62,7 +65,8 @@ export const getTitleByID = async (id: string): Promise<APIResponseByID> => {
       `${URLWithKey}&i=${id}`
     );
     if (data.Response === "False") throw data.Error;
-    return data;
+console.log(data)
+return data;
   } catch (err) {
     throw err;
   }
