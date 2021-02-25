@@ -1,6 +1,6 @@
 # Name days search
 
-Application that searches for movie films & series from the public API (http://www.omdbapi.com/).
+An application that searches for movie films & series from the public API (http://www.omdbapi.com/).
 
 ##### Application allows user to:
 - search for movies, series by input names

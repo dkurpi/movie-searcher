@@ -69,10 +69,13 @@ export function Home() {
     setMoreInfoId("");
   };
 
+  const isCardWrapperVisible = !!titleList.length && !isLoading && title;
+  const isTitlesError = !titleList.length && !isLoading && title;
+  const isInputEmpty = !title && !isThisFirstTime;
+
   return (
     <>
       {/* MOVIE INFO */}
-
       <Animation>
         {moreInfoId && (
           <Animation.Children key={moreInfoId}>
@@ -86,11 +89,9 @@ export function Home() {
       </Animation>
 
       {/* SEARCH CONTAINER */}
-
       <Search>
         <Search.Text>{"Find  video:"}</Search.Text>
         <Search.Input onChange={handleInputChange} value={inputValue} />
-
         <Search.Select value={type} onChange={handleSelectChange}>
           {videoTypes.map((option) => (
             <Search.Option name={option[0]} value={option[1]} key={option[0]} />
@@ -100,9 +101,8 @@ export function Home() {
       </Search>
 
       {/* CARD WRAPPER */}
-
       <Animation>
-        {!!titleList.length && !isLoading && title && (
+        {isCardWrapperVisible && (
           <Animation.Children key={title}>
             <small>{`For "${title}", found ${totalResults} ${
               type === VideoType.ALL ? "titles" : type
@@ -133,9 +133,8 @@ export function Home() {
       </Animation>
 
       {/* NO TITLES ERROR*/}
-
       <Animation>
-        {!titleList.length && !isLoading && title && (
+        {isTitlesError && (
           <Animation.Children key={title}>
             <Message
               mainText={`For title "${title}", didn't found any ${
@@ -147,9 +146,7 @@ export function Home() {
         )}
       </Animation>
 
-
       {/* START MESSAGE  */}
-
       <Animation>
         {isThisFirstTime && (
           <Animation.Children key={title}>
@@ -161,11 +158,9 @@ export function Home() {
         )}
       </Animation>
 
-
       {/* EMPTY INPUT ERROR  */}
-
       <Animation>
-        {!title && !isThisFirstTime && (
+        {isInputEmpty && (
           <Animation.Children key={title}>
             <Message
               mainText={`You forgot to type title!`}
@@ -175,9 +170,7 @@ export function Home() {
         )}
       </Animation>
 
-
       {!!isLoading && <Loader />}
-
     </>
   );
 }
