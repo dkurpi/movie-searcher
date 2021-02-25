@@ -84,6 +84,7 @@ describe("<MovieInfo /> component testing", () => {
         text="CLICK"
       />
     );
+    
     const card = getByText("CLICK");
     fireEvent.click(card);
     expect(click).toHaveBeenCalledTimes(1);

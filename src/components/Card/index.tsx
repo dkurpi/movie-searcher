@@ -52,6 +52,7 @@ Card.Year = ({ children, ...restProps }) => (
 Card.Type = ({ children, ...restProps }) => (
   <Type {...restProps}>{children}</Type>
 );
+
 Card.Wrapper = ({ children, ...restProps }) => (
   <CardWrapper {...restProps}>{children}</CardWrapper>
 );

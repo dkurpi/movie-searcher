@@ -55,13 +55,6 @@ MovieInfo.Rating = ({ children, value, size }) => (
   />
 );
 
-MovieInfo.Title = ({ children }) => <h2>{children}</h2>;
-MovieInfo.Date = ({ children }) => <Date>{children}</Date>;
-MovieInfo.Tag = ({ children }) => <Tag>{children}</Tag>;
-MovieInfo.Genre = ({ children }) => <Genre>{children}</Genre>;
-MovieInfo.About = ({ children }) => <Description>{children}</Description>;
-MovieInfo.RateSection = ({ children }) => <RateSection>{children}</RateSection>;
-
 MovieInfo.Atrributes = ({ children, name, values }) => (
   <Actors>
     <b>{name}</b>
@@ -73,3 +66,10 @@ MovieInfo.Atrributes = ({ children, name, values }) => (
 MovieInfo.Bar = ({ children, text, onClick }) => (
   <CloseTag onClick={onClick}>{text}</CloseTag>
 );
+
+MovieInfo.Title = ({ children }) => <h2>{children}</h2>;
+MovieInfo.Date = ({ children }) => <Date>{children}</Date>;
+MovieInfo.Tag = ({ children }) => <Tag>{children}</Tag>;
+MovieInfo.Genre = ({ children }) => <Genre>{children}</Genre>;
+MovieInfo.About = ({ children }) => <Description>{children}</Description>;
+MovieInfo.RateSection = ({ children }) => <RateSection>{children}</RateSection>;

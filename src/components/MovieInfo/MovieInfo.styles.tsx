@@ -16,6 +16,7 @@ export const Date = styled.div`
   font-size: 12px;
   margin: 0.5em 0;
 `;
+
 export const Content = styled.div`
   max-width: 1080px;
   display: flex;
@@ -25,9 +26,11 @@ export const Content = styled.div`
     flex-direction: column;
   }
 `;
+
 export const RateSection = styled.section`
   margin: 2vh auto;
 `;
+
 export const Actors = styled.p`
   font-size: 18px;
   margin: 1em 0;
@@ -55,13 +58,6 @@ export const Tag = styled.span`
   border-radius: 10px;
   margin-right: 10px;
 `;
-export const Genre = styled.span`
-  font-size: 18px;
-`;
-export const Description = styled.p`
-  font-size: 16px;
-`;
-export const ImageOuter = styled.div``;
 
 export const Info = styled.div`
   width: 60%;
@@ -88,3 +84,11 @@ export const Image = styled.img`
     width: 94%;
   }
 `;
+
+export const Genre = styled.span`
+  font-size: 18px;
+`;
+export const Description = styled.p`
+  font-size: 16px;
+`;
+export const ImageOuter = styled.div``;

@@ -16,7 +16,6 @@ export function Home() {
   const [title, setTitle] = useState("");
   const [totalResults, setTotalResults] = useState(0);
   const [titleList, setTitleList] = useState<SingleTitle[]>([]);
-
   const [moreInfoId, setMoreInfoId] = useState("");
 
   useEffect(() => {
@@ -72,6 +71,8 @@ export function Home() {
 
   return (
     <>
+      {/* MOVIE INFO */}
+
       <Animation>
         {moreInfoId && (
           <Animation.Children key={moreInfoId}>
@@ -84,6 +85,8 @@ export function Home() {
         )}
       </Animation>
 
+      {/* SEARCH CONTAINER */}
+
       <Search>
         <Search.Text>{"Find  video:"}</Search.Text>
         <Search.Input onChange={handleInputChange} value={inputValue} />
@@ -95,6 +98,8 @@ export function Home() {
         </Search.Select>
         <Search.Button onClick={handleSearchClick}>Search</Search.Button>
       </Search>
+
+      {/* CARD WRAPPER */}
 
       <Animation>
         {!!titleList.length && !isLoading && title && (
@@ -127,6 +132,8 @@ export function Home() {
         )}
       </Animation>
 
+      {/* NO TITLES ERROR*/}
+
       <Animation>
         {!titleList.length && !isLoading && title && (
           <Animation.Children key={title}>
@@ -140,7 +147,8 @@ export function Home() {
         )}
       </Animation>
 
-      {!!isLoading && <Loader />}
+
+      {/* START MESSAGE  */}
 
       <Animation>
         {isThisFirstTime && (
@@ -153,6 +161,9 @@ export function Home() {
         )}
       </Animation>
 
+
+      {/* EMPTY INPUT ERROR  */}
+
       <Animation>
         {!title && !isThisFirstTime && (
           <Animation.Children key={title}>
@@ -163,6 +174,10 @@ export function Home() {
           </Animation.Children>
         )}
       </Animation>
+
+
+      {!!isLoading && <Loader />}
+
     </>
   );
 }

@@ -48,10 +48,12 @@ export const Title = styled.p`
   font-size: 20px;
   text-overflow: ellipsis;
 `;
+
 export const Year = styled.p`
   font-size: 12px;
   font-weight: 400;
 `;
+
 export const Type = styled.div`
   font-size: 12px;
   font-weight: 400;

@@ -4,7 +4,6 @@ import axios, { AxiosResponse } from "axios";
 const URLWithKey = "https://omdbapi.com/?apikey=aeae8ab";
 ///
 
-
 interface APIResponseMovieList {
   Response: string;
   Search: SingleTitle[];
@@ -49,7 +48,7 @@ export const getTitles = async (
     const { data }: AxiosResponse<APIResponseMovieList> = await axios(
       `${URLWithKey}&s=${searchPhrase}&type=${type}&page=${page}`
     );
-console.log(data)
+
     if (data.Response === "False") throw data.Error;
     return data;
   } catch (err) {
@@ -59,14 +58,14 @@ console.log(data)
 
 export const getTitleByID = async (id: string): Promise<APIResponseByID> => {
   try {
-    if (!id) throw alert("Something went wrong!");
+    if (!id) throw alert("Something went wrong pass TITLE ID!");
 
     const { data }: AxiosResponse<APIResponseByID> = await axios(
       `${URLWithKey}&i=${id}`
     );
     if (data.Response === "False") throw data.Error;
-console.log(data)
-return data;
+
+    return data;
   } catch (err) {
     throw err;
   }

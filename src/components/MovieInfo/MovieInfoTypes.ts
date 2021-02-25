@@ -21,10 +21,12 @@ type RatingProps = {
   value: number;
   size: "small" | "medium" | "large" | undefined;
 };
+
 type AttributesProps = {
   name: string;
   values: string | undefined;
 };
+
 type BarProps = {
   onClick: () => void;
   text: string;

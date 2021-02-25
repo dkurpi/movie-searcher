@@ -17,7 +17,8 @@ Here is a working live demo : https://dkurpi.github.io/movie-searcher
 3. **Styling** *2h*
 
 #### Here is the app demo after 4h of work: 
-https://dkurpi.github.io/movie-searcher-v1
+- Demo: https://dkurpi.github.io/movie-searcher-v1
+- Repo: https://github.com/dkurpi/movie-searcher-v1
 
 ## Extra features process - 6h
 1. **Refactored** to get clean code *45min*
