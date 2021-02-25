@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
-///Should not public :)
-const URLWithKey = "http://omdbapi.com/?apikey=aeae8ab";
+///Should not be public :)
+const URLWithKey = "https://omdbapi.com/?apikey=aeae8ab";
 ///
 
 
