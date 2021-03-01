@@ -1,37 +1,7 @@
 # Name days search
 
-An application that searches for movie films & series from the public API (http://www.omdbapi.com/).
-
-##### Application allows user to:
-- search for movies, series by input names
-- see details about any movie,series in database
-
-## Demo
-
+An application that searches for movie films & series.
 Here is a working live demo : https://dkurpi.github.io/movie-searcher
-
-## Basic development process  - 4h
-
-1. **Setting project + API calls**  *30min*
-2. **Basic Functions of App** *1h 30min*
-3. **Styling** *2h*
-
-#### Here is the app demo after 4h of work: 
-- Demo: https://dkurpi.github.io/movie-searcher-v1
-- Repo: https://github.com/dkurpi/movie-searcher-v1
-
-## Extra features process - 6h
-1. **Refactored** to get clean code *45min*
-2. **Implemented Framer-motion for animations** *45min*
-3. **Improved overall styling** *1h*
-4. **Implemented movie info container** *1h*
-5. **Styled Movie Info Container** *1h*
-6. **Refactored** components *1h*
-7. Wrote couple **test** for components/containers *1h*
-
-#### Here is the app after 10h of work: 
-https://dkurpi.github.io/movie-searcher
-
 
 ---
 ## Technologies
@@ -42,6 +12,7 @@ https://dkurpi.github.io/movie-searcher
 - React testing library for tests
 - Framer motion for animations
 - Material UI for Icons, Pagination
+- API (http://www.omdbapi.com/).
 
 ## To improve
 
